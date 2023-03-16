@@ -1,0 +1,86 @@
+<div>
+  <mat-card
+    [ngClass]="{
+      'score-card': true,
+      'green-bg': fixture.endNotified == false,
+      'purple-bg': fixture.endNotified == true,
+      'brinj-bg': fixture.aboutNotified == true
+    }"
+    *ngFor="let fixture of fixtures"
+  >
+    <!-- <span class="home">{{ fixture.homeTeam }}</span>
+    <span class="score"
+      >{{ fixture.homeTeamScore }} : {{ fixture.awayTeamScore }}</span
+    >
+    <span class="away">{{ fixture.awayTeam }}</span>
+    <span class="minuetes">{{ fixture.minutes }}</span>
+    <span>End:{{ fixture.endNotified }}</span> -->
+
+    <div fxLayout="row" fxLayoutAlign="center center">
+      <mat-icon
+        *ngIf="!fixture.endNotified && !fixture.aboutNotified"
+        aria-hidden="false"
+        aria-label="Example home icon"
+        fontIcon="sports_soccer"
+      ></mat-icon>
+      <i *ngIf="fixture.endNotified" class="material-icons">timer_off</i>
+      <i *ngIf="fixture.aboutNotified" class="material-icons">timer</i>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="center center">
+      <span
+        style="font-size: 10px"
+        *ngIf="!fixture.endNotified && !fixture.aboutNotified"
+        >In Game</span
+      >
+      <span style="font-size: 10px" *ngIf="fixture.endNotified">Ended</span>
+      <span style="font-size: 10px" *ngIf="fixture.aboutNotified"
+        >About to start</span
+      >
+    </div>
+    <!-- <span>End:{{ fixture.endNotified }}</span> -->
+    <div fxLayout="row" fxLayoutAlign="center center">
+      <div fxFlex="25" style="margin-top: 17px">
+        <div class="team-name">
+          {{ fixture.homeTeam }}
+        </div>
+        <div style="font-size: 9px">Home</div>
+      </div>
+      <div fxFlex="20" class="home-score">{{ fixture.homeTeamScore }}</div>
+      <div fxFlex="5">:</div>
+      <div fxFlex="20" class="away-score">{{ fixture.awayTeamScore }}</div>
+      <div fxFlex="25" style="margin-top: 17px">
+        <div class="team-name">
+          {{ fixture.awayTeam }}
+        </div>
+        <div style="font-size: 9px">Away</div>
+      </div>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="center center">
+      <button mat-flat-button color="accent">
+        {{ itemtooltiptext(fixture.minutes) }}
+      </button>
+    </div>
+
+    <!-- <div fxLayout="row" fxLayoutAlign="center center">
+      <span fxFlex="50">Home</span>
+      <span fxFlex="50">Away</span>
+    </div> -->
+
+    <!-- <mat-card-header fxLayoutAlign="center center" style="padding: 5px">
+      <mat-card-title>
+        <div>
+          <mat-icon
+            aria-hidden="false"
+            aria-label="Example home icon"
+            fontIcon="home"
+          ></mat-icon>
+        </div>
+        <div>In Game</div>
+      </mat-card-title>
+      <mat-card-subtitle>Subtitle</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content style="padding: 5px !important">
+      Body text
+    </mat-card-content> -->
+  </mat-card>
+</div>

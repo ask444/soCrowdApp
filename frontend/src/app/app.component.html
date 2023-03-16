@@ -1,0 +1,13 @@
+<span>{{ helloMessage }}</span> <br />
+<li *ngFor="let item of receivedMessages">
+  Source: {{ item.source }} -> Content {{ item.content }}
+</li>
+
+<div class="container">
+  <h1>Live football scores</h1>
+  <div class="score-card-list" *ngIf="gameweek.length>0">
+    <app-score-card [scoreData]="gameweek"></app-score-card>
+  </div>
+</div>
+
+<!-- <router-outlet></router-outlet> -->

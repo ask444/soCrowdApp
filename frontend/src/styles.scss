@@ -1,0 +1,38 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+.container {
+    text-align: center;
+  }
+  .score-card-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .score-card {
+    width: 250px;
+    height: 150px;
+    // display: flex !important;
+    margin: 10px;
+    float: left;
+    padding: 10px;
+  }
+
+  .home {
+    // flex: 1;
+    // text-align: right;
+    width: 33%;
+  }
+  .away {
+    // flex: 1;
+    // text-align: left;
+    width: 33%;
+
+  }
+
+  .score {
+    // width: 100px;
+    width: 33%;
+
+  }

@@ -1,0 +1,21 @@
+.green-bg{
+    background-color: green !important;
+    color: #fff;
+}
+.purple-bg{
+    background-color: purple !important;
+    color: #fff;
+}
+.brinj-bg{
+    background-color: #614051 !important;
+    color: #fff;
+}
+.team-name{
+    font-size: 15px;
+}
+.home-score{
+    font-size: 20px;
+}
+.away-score{
+    font-size: 20px;
+}
