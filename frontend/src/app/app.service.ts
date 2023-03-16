@@ -21,5 +21,9 @@ export class AppService {
   getConversations(): Observable<any[]> {
     return this.socket.fromEvent<any[]>('scoreRoom');
   }
+  getLiveScore(): Observable<any> {
+    return this.socket.fromEvent<any[]>('scoreRoom');
+  }
+
 
 }

@@ -31,9 +31,6 @@ export class ScoreCardComponent implements OnInit {
       return ele;
     })
     this.fixtures = this.scoredataServC.orderScores(newDATA);
-
-    // this.showcomp=true;
-
   }
 
   itemtooltiptext(updated: any) {

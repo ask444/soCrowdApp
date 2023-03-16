@@ -22,12 +22,12 @@ export class AppComponent implements OnInit {
   public helloMessage: string = ''
   public receivedMessages: Array<ISocketMessage> = []; //messages received from websockets
   public table!: LeagueTable;
-  public gameweek: GameWeek[]=[];
+  public gameweek: GameWeek[] = [];
   private conversationSubscription!: Subscription;
-
+  public livescores: any[] = [];
 
   constructor(
-    private appService: AppService,private chatService: AppService,
+    private appService: AppService, private chatService: AppService,
     private footballData: FootballDataService, private wsService: WebsocketService, private socket: Socket
   ) {
 
@@ -38,13 +38,23 @@ export class AppComponent implements OnInit {
     console.log(_.random(1, 100)); //lodash function
 
     this.conversationSubscription = this.appService
-    .getConversations()
-    .subscribe((conversations: GameWeek[]) => {
-      console.log('conversations',conversations);
-      this.gameweek=conversations;
-      // this.conversations.push(conversations[0]); // Note: from mergeMap stream
-      this.conversationSubscription.unsubscribe();
-    });
+      .getConversations()
+      .subscribe((conversations: GameWeek[]) => {
+        console.log('conversations', conversations);
+        this.gameweek = conversations;
+        // this.conversations.push(conversations[0]); // Note: from mergeMap stream
+        this.conversationSubscription.unsubscribe();
+      });
+
+    let scoreCall = this.appService.getLiveScore().subscribe((score: any) => {
+      console.log('score:', score, typeof score);
+      if (score.type == 'score') {
+        this.livescores.push(score);
+      }
+      console.log('livescores:', this.livescores);
+      // return score;
+    })
+
 
 
 
@@ -85,7 +95,7 @@ export class AppComponent implements OnInit {
     //   );
   }
 
-  ngOnDestroy(){
+  ngOnDestroy() {
     // this.conversationSubscription.unsubscribe();
   }
 

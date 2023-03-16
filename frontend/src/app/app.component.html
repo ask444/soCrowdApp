@@ -5,8 +5,33 @@
 
 <div class="container">
   <h1>Live football scores</h1>
-  <div class="score-card-list" *ngIf="gameweek.length>0">
+  <div class="score-card-list" *ngIf="gameweek.length > 0">
     <app-score-card [scoreData]="gameweek"></app-score-card>
+  </div>
+  <div *ngIf="livescores.length > 0">
+    <mat-card
+      style="margin: 10px; border: 1px solid #ddd"
+      *ngFor="let item of livescores"
+    >
+      <mat-card-content>
+        <div fxFlex="80" fxLayoutAlign="start center">
+          <i class="material-icons">sports_soccer</i>
+          <span
+            >Goal in {{ item.gameState.homeTeam }} vs
+            {{ item.gameState.awayTeam }}:</span
+          >
+          <span
+            >new Score {{ item.gameState.homeTeam
+            }}{{ item.gameState.homeTeamScore }} -
+            {{ item.gameState.awayTeamScore
+            }}{{ item.gameState.awayTeam }}:</span
+          >
+        </div>
+        <div fxFlex="20" fxLayoutAlign="end center">
+          {{ item.timestamp | date : "dd/MM/y HH:mm" }}
+        </div>
+      </mat-card-content>
+    </mat-card>
   </div>
 </div>
 
